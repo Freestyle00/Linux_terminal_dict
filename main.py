@@ -1,12 +1,32 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QMainWindow
+import webbrowser
+import sys
+from PySide2.QtCore import Slot
 
-Form, Window = uic.loadUiType("UI_files/untitled.ui")
+class LinuxTerminalDict():
+    def run(self):
+        app = QApplication(sys.argv)
+        Form, Window = uic.loadUiType("UI_files/untitled.ui")
+        window = MainWindow(Form, Window)
+        window.Window.show()
+        sys.exit(app.exec_())
 
-app = QApplication([])
-window = Window()
-form = Form()
-form.setupUi(window)
-window.show()
-app.exec()
+class MainWindow(QMainWindow):
+    def __init__(this, Form, Window):
+        super(MainWindow, this).__init__()
+        this.Window = Window()
+        this.Form = Form()
+        this.Form.setupUi(this.Window)
+        
+    @Slot()
+    def on_hello_world_clicked(this):
+        print("hello world")
+        
 
+def main():
+    LinuxTerminalDict().run()
+
+
+if __name__ == "__main__":
+    main()
