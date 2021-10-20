@@ -1,5 +1,5 @@
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PySide2 import uic
+from PySide2.QtWidgets import QApplication, QMainWindow
 import webbrowser
 import sys
 from PySide2.QtCore import Slot
@@ -18,11 +18,11 @@ class MainWindow(QMainWindow):
         this.Window = Window()
         this.Form = Form()
         this.Form.setupUi(this.Window)
-        
+
     @Slot()
     def on_hello_world_clicked(this):
         print("hello world")
-        
+
 
 def main():
     LinuxTerminalDict().run()
